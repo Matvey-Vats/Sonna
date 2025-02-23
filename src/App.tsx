@@ -1,5 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import MainLayout from './layouts/MainLayout'
+import Albums from './pages/Albums/Albums'
+import Artists from './pages/Artists/Artists'
 import Home from './pages/Home/Home'
 
 function App() {
@@ -8,6 +10,8 @@ function App() {
 			<Routes>
 				<Route path='/' element={<MainLayout />}>
 					<Route path='' element={<Home />} />
+					<Route path='/albums' element={<Albums />} />
+					<Route path='/artists' element={<Artists />} />
 				</Route>
 			</Routes>
 		</div>

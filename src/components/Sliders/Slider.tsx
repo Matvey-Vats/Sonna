@@ -13,8 +13,10 @@ const Slider = <T,>({ items, renderItem }: SliderProps<T>) => {
 	return (
 		<div className='max-w-[1200px]'>
 			<Swiper
+				slidesPerView={Math.min(items.length, 3)}
+				slidesPerGroup={1}
+				loop={items.length > 3}
 				spaceBetween={20}
-				slidesPerView={1}
 				breakpoints={{
 					1392: { slidesPerView: 4, spaceBetween: 70 },
 					768: { slidesPerView: 3, spaceBetween: 0 },

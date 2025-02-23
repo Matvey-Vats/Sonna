@@ -1,25 +1,21 @@
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 import TrackSlider from '../../../components/Sliders/TrackSlider'
+import { useGetTopChartsQuery } from '../../../redux/api/apiSlice'
 
 const PopularTracks: FC = () => {
-	const [tracks, setTracks] = useState([])
-	useEffect(() => {
-		fetch('api/chart/0/tracks')
-			.then(res => {
-				return res.json()
-			})
-			.then(data => {
-				console.log(data)
+	const { data: tracks, isLoading } = useGetTopChartsQuery('', {
+		selectFromResult: ({ data, isLoading }) => ({
+			data: data?.tracks?.data || [],
+			isLoading,
+		}),
+	})
 
-				setTracks(data.data)
-			})
-	}, [])
 	return (
 		<div className='w-full mb-[70px]'>
 			<h2 className='text-white font-bold font-[Poppins] text-3xl mb-5'>
 				Most popular tracks
 			</h2>
-			<TrackSlider items={tracks} />
+			<TrackSlider items={tracks} isLoading={isLoading} />
 		</div>
 	)
 }

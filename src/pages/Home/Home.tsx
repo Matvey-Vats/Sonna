@@ -1,5 +1,5 @@
-import { Play } from 'lucide-react'
 import { FC } from 'react'
+import Player from '../../components/Player/Player'
 import PopularAlbums from './Sections/PopularAlbums'
 import PopularArtists from './Sections/PopularArtists'
 import PopularTracks from './Sections/PopularTracks'
@@ -10,43 +10,8 @@ const Home: FC = () => {
 			<PopularArtists />
 			<PopularAlbums />
 			<PopularTracks />
-			<div className='flex items-center justify-between'>
-				<div>
-					<div className='w-[250px] h-[250px] bg-fuchsia-500 rounded-xl relative group'>
-						<Play
-							size={30}
-							className='w-10 h-10 text-white absolute inset-0 m-auto opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer'
-						/>
-					</div>
-					<h3>System of a Down</h3>
-				</div>
-				<div>
-					<div className='w-[250px] h-[250px] bg-fuchsia-500 rounded-xl relative group'>
-						<Play
-							size={30}
-							className='w-10 h-10 text-white absolute inset-0 m-auto opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer'
-						/>
-					</div>
-					<h3>System of a Down</h3>
-				</div>
-				<div>
-					<div className='w-[250px] h-[250px] bg-fuchsia-500 rounded-xl relative group'>
-						<Play
-							size={30}
-							className='w-10 h-10 text-white absolute inset-0 m-auto opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer'
-						/>
-					</div>
-					<h3>System of a Down</h3>
-				</div>
-				<div>
-					<div className='w-[250px] h-[250px] bg-fuchsia-500 rounded-xl relative group'>
-						<Play
-							size={30}
-							className='w-10 h-10 text-white absolute inset-0 m-auto opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer'
-						/>
-					</div>
-					<h3>System of a Down</h3>
-				</div>
+			<div>
+				<Player track='https://cdnt-preview.dzcdn.net/api/1/1/b/3/5/0/b3521c1ef83cb00efbd744432e0505fa.mp3?hdnea=exp=1740247191~acl=/api/1/1/b/3/5/0/b3521c1ef83cb00efbd744432e0505fa.mp3*~data=user_id=0,application_id=42~hmac=5ddc866f78a4a09892a236f9907119649c8d0cb4d18258ac4b128179aa45adea' />
 			</div>
 		</div>
 	)

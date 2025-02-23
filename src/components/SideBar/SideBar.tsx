@@ -36,7 +36,7 @@ const SideBar: FC = () => {
 						</Link>
 					</li>
 					<li>
-						<Link to='/' className='flex items-center'>
+						<Link to='/albums' className='flex items-center'>
 							<Disc3 className='h-6 w-6 text-white' />
 							<span className='text-white ml-3 hidden sm:inline'>Albums</span>
 						</Link>
@@ -48,7 +48,7 @@ const SideBar: FC = () => {
 						</Link>
 					</li>
 					<li>
-						<Link to='/' className='flex items-center'>
+						<Link to='/artists' className='flex items-center'>
 							<Palette className='h-6 w-6 text-white' />
 							<span className='text-white ml-3 hidden sm:inline'>Artists</span>
 						</Link>

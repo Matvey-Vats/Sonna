@@ -1,23 +1,28 @@
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
+import { Link } from 'react-router-dom'
 import AlbumSlider from '../../../components/Sliders/AlbumSlider'
+import { useGetTopChartsQuery } from '../../../redux/api/apiSlice'
 
 const PopularAlbums: FC = () => {
-	const [albums, setAlbums] = useState([])
-	useEffect(() => {
-		fetch('api/chart/0/albums')
-			.then(res => {
-				return res.json()
-			})
-			.then(data => {
-				setAlbums(data.data)
-			})
-	}, [])
+	const { data: albums, isLoading } = useGetTopChartsQuery('', {
+		selectFromResult: ({ data, isLoading }) => ({
+			data: data?.albums?.data || [],
+			isLoading,
+		}),
+	})
+
 	return (
 		<div className='mb-[70px]'>
-			<h2 className='text-white font-bold font-[Poppins] text-3xl mb-5'>
-				Most popular albums
-			</h2>
-			<AlbumSlider items={albums} />
+			<div className='flex items-center justify-between mb-5'>
+				<h2 className='text-white font-bold font-[Poppins] text-3xl'>
+					Most popular albums
+				</h2>
+				<Link to='/albums' className='text-white font-medium'>
+					View more
+				</Link>
+			</div>
+
+			<AlbumSlider items={albums} isLoading={isLoading} />
 		</div>
 	)
 }

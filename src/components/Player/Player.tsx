@@ -6,41 +6,62 @@ import {
 	Volume2,
 	VolumeX,
 } from 'lucide-react'
-import { ChangeEvent, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+	setCurrentTime,
+	setDuration,
+	setVolume,
+	togglePlay,
+} from '../../redux/slices/playerSlice'
+import { RootState } from '../../redux/store'
 
-const Player = ({ track }: { track: string }) => {
+const Player = () => {
 	const audioRef = useRef<HTMLAudioElement | null>(null)
-	const [isPlaying, setIsPlaying] = useState(false)
-	const [currentTime, setCurrentTime] = useState(0)
-	const [duration, setDuration] = useState(0)
-	const [volume, setVolume] = useState(1)
+	const dispatch = useDispatch()
+	const {
+		isPlaying,
+		currentTrack,
+		currentTrackName,
+		currentTime,
+		duration,
+		volume,
+	} = useSelector((state: RootState) => state.player)
 
 	useEffect(() => {
-		if (!track) {
-			console.error('Error: path to audio file is empty.')
-			return
-		}
-		const audio = audioRef.current
-		if (audio) {
-			audio.src = track
-			audio.load()
-			audio.ontimeupdate = () => setCurrentTime(audio.currentTime)
-			audio.onloadedmetadata = () => setDuration(audio.duration)
-		}
-	}, [track])
+		if (currentTrack && audioRef.current) {
+			audioRef.current.src = currentTrack
+			audioRef.current.load()
+			audioRef.current.ontimeupdate = () =>
+				dispatch(setCurrentTime(audioRef.current!.currentTime))
+			audioRef.current.onloadedmetadata = () =>
+				dispatch(setDuration(audioRef.current!.duration))
 
-	const handleSeek = (e: ChangeEvent<HTMLInputElement>) => {
+			if (isPlaying) {
+				audioRef.current.play()
+			} else {
+				audioRef.current.pause()
+			}
+		}
+	}, [currentTrack, dispatch])
+
+	const togglePlayHandler = () => {
+		dispatch(togglePlay())
 		if (audioRef.current) {
-			audioRef.current.currentTime = Number(e.target.value)
-			setCurrentTime(Number(e.target.value))
+			if (isPlaying) {
+				audioRef.current.pause()
+			} else {
+				audioRef.current.play()
+			}
 		}
 	}
+
 	const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const volumeValue = Number(e.target.value)
 		if (audioRef.current) {
 			audioRef.current.volume = volumeValue
 		}
-		setVolume(volumeValue)
+		dispatch(setVolume(volumeValue))
 	}
 
 	const formatTime = (time: number) => {
@@ -51,24 +72,21 @@ const Player = ({ track }: { track: string }) => {
 		return `${minutes}:${seconds}`
 	}
 
-	const togglePlay = () => {
-		if (audioRef.current) {
-			if (isPlaying) {
-				audioRef.current.pause()
-			} else {
-				audioRef.current.play()
-			}
-			setIsPlaying(!isPlaying)
-		}
-	}
 	return (
-		<div className='fixed bottom-0 left-[50%] transform -translate-x-[50%] w-[500px] bg-gray-900 p-4 flex flex-col items-center gap-4 z-50 px-6 shadow-lg rounded-t-2xl'>
+		<div
+			className={`${
+				currentTrack === '' ? 'hidden' : ''
+			} fixed bottom-0 left-[50%] transform -translate-x-[50%] w-[500px] bg-gray-900 p-4 flex flex-col items-center gap-4 z-50 px-6 shadow-lg rounded-t-2xl`}
+		>
+			<div className='text-white font-bold'>
+				<h1>{currentTrackName}</h1>
+			</div>
 			<div className='flex gap-4 items-center'>
 				<button className='hover:scale-110 transition-transform'>
 					<SkipBack className='text-white w-6 h-6' />
 				</button>
 				<button
-					onClick={togglePlay}
+					onClick={togglePlayHandler}
 					className='text-white hover:scale-110 transition-transform'
 				>
 					{isPlaying ? <Pause size={30} /> : <Play size={30} />}
@@ -87,7 +105,7 @@ const Player = ({ track }: { track: string }) => {
 					min='0'
 					max={duration || 1}
 					value={currentTime}
-					onChange={handleSeek}
+					onChange={e => dispatch(setCurrentTime(Number(e.target.value)))}
 					className='w-full h-1 bg-gray-600 rounded-lg appearance cursor-pointer accent-blue-500'
 				/>
 				<span className='text-white text-sm w-10'>{formatTime(duration)}</span>
@@ -96,12 +114,12 @@ const Player = ({ track }: { track: string }) => {
 			<div className='flex items-center gap-2'>
 				{volume > 0 ? (
 					<Volume2
-						onClick={() => setVolume(0)}
+						onClick={() => dispatch(setVolume(0))}
 						className='text-white w-5 h-5'
 					/>
 				) : (
 					<VolumeX
-						onClick={() => setVolume(100)}
+						onClick={() => dispatch(setVolume(100))}
 						className='text-white w-5 h-5'
 					/>
 				)}
@@ -118,8 +136,8 @@ const Player = ({ track }: { track: string }) => {
 			</div>
 
 			<audio ref={audioRef}>
-				<source src={track} type='audio/mpeg' />
-				<source src={track.replace('.mp3', '.ogg')} type='audio/ogg' />
+				<source src={currentTrack} type='audio/mpeg' />
+				<source src={currentTrack.replace('.mp3', '.ogg')} type='audio/ogg' />
 			</audio>
 		</div>
 	)

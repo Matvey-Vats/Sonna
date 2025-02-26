@@ -32,7 +32,7 @@ const AlbumSlider: FC<{ items: TAlbum[]; isLoading: boolean }> = ({
 				isLoading ? (
 					<Skeleton />
 				) : (
-					<Link to='/'>
+					<Link to={`/albums/${album.id}`}>
 						<div className='bg-[#e0aaff] rounded-md shadow-lg w-[250px] h-[300px] text-center'>
 							<img
 								src={album?.cover_big}

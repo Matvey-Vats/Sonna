@@ -31,7 +31,7 @@ const ArtistsSlider: FC<{ items: TArtist[]; isLoading: boolean }> = ({
 				isLoading ? (
 					<Skeleton />
 				) : (
-					<Link to='/'>
+					<Link to={`/artists/${artist.id}`}>
 						<div className='bg-[#e0aaff] rounded-md shadow-md w-[250px] h-[300px] text-center'>
 							<div>
 								<img

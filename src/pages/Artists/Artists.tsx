@@ -1,7 +1,8 @@
 import { FC, useEffect, useRef, useState } from 'react'
-import Pagination from '../components/Pagination'
-import Spinner from '../components/Spinner'
-import { useGetReleasesQuery } from '../redux/api/apiSlice'
+import { Link } from 'react-router-dom'
+import Pagination from '../../components/Pagination'
+import Spinner from '../../components/Spinner'
+import { useGetReleasesQuery } from '../../redux/api/apiSlice'
 
 type TArtist = {
 	id: number
@@ -81,13 +82,12 @@ const Artists: FC = () => {
 
 			<div className='flex flex-wrap items-center justify-between gap-[20px]'>
 				{artists.map((artist: TArtist) => (
-					<div
-						className='w-[220px] h-[275px] rounded-md bg-pink-900 text-center mt-[10px]'
-						key={artist.id}
-					>
-						<img src={artist.picture_big} alt={artist.name} />
-						<h3>{artist.name}</h3>
-					</div>
+					<Link key={artist.id} to={`/artists/${artist.id}`}>
+						<div className='w-[220px] h-[275px] rounded-md bg-pink-900 text-center mt-[10px]'>
+							<img src={artist.picture_big} alt={artist.name} />
+							<h3>{artist.name}</h3>
+						</div>
+					</Link>
 				))}
 			</div>
 			<Pagination

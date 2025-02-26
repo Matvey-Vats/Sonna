@@ -25,6 +25,24 @@ export interface IAlbum {
 	artist: IArtist
 }
 
+export interface IGenre {
+	id: number
+	name: string
+	picture: string
+}
+
+export interface IAlbumDetail {
+	id: number
+	cover_big: string
+	duration: number
+	fans: number
+	genres: IGenre[]
+	label: string
+	title: string
+	tracklist: string
+	tracks: TTracks[]
+}
+
 export type TTracks = {
 	id: number
 	title: string

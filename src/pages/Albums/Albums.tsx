@@ -1,8 +1,8 @@
 import { FC, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import Pagination from '../components/Pagination'
-import Spinner from '../components/Spinner'
-import { useGetReleasesQuery } from '../redux/api/apiSlice'
+import Pagination from '../../components/Pagination'
+import Spinner from '../../components/Spinner'
+import { useGetReleasesQuery } from '../../redux/api/apiSlice'
 
 interface IAlbum {
 	id: number
@@ -56,7 +56,7 @@ const Albums: FC = () => {
 			<div className='flex items-center justify-between flex-wrap gap-[20px]'>
 				{isError && <p className='text-white'>Error</p>}
 				{albums?.data?.map((album: IAlbum) => (
-					<Link to='/' key={album.id}>
+					<Link to={`/albums/${album.id}`} key={album.id}>
 						<div className='w-[230px] h-[275px] text-center rounded-md bg-pink-900'>
 							<img src={album.cover_big} alt={album.title} />
 							<h2 className='text-white'>{album.title}</h2>

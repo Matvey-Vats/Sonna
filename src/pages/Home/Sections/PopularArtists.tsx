@@ -1,15 +1,31 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
-import ArtistSlider from '../../../components/Sliders/ArtistSlider'
+import ArtistSlider, { TArtist } from '../../../components/Sliders/ArtistSlider'
 import { useGetTopChartsQuery } from '../../../redux/api/apiSlice'
 
-const PopularArtists: FC = () => {
+type PropsTypes = {
+	items: TArtist[]
+	isSearch: boolean
+}
+
+const PopularArtists: FC<PropsTypes> = ({ items, isSearch = false }) => {
 	const { data: artists, isLoading } = useGetTopChartsQuery('', {
 		selectFromResult: ({ data, isLoading }) => ({
 			data: data?.artists?.data || [],
 			isLoading,
 		}),
 	})
+
+	const artistsData = items
+		? items
+				.map((item: any) => item.artist)
+				.filter(
+					(artist, index, self) =>
+						index === self.findIndex(a => a.id === artist.id)
+				)
+		: []
+
+	const displayArtists = isSearch ? artistsData : artists
 
 	return (
 		<div className='w-full mb-[70px]'>
@@ -22,7 +38,7 @@ const PopularArtists: FC = () => {
 				</Link>
 			</div>
 
-			<ArtistSlider items={artists} isLoading={isLoading} />
+			<ArtistSlider items={displayArtists} isLoading={isLoading} />
 		</div>
 	)
 }

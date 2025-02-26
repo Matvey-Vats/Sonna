@@ -1,8 +1,10 @@
 import { Route, Routes } from 'react-router-dom'
 import MainLayout from './layouts/MainLayout'
-import Albums from './pages/Albums/Albums'
-import Artists from './pages/Artists/Artists'
+import Albums from './pages/Albums'
+import Artists from './pages/Artists'
 import Home from './pages/Home/Home'
+import Playlists from './pages/Playlists'
+import Tracks from './pages/Tracks/Tracks'
 
 function App() {
 	return (
@@ -12,6 +14,8 @@ function App() {
 					<Route path='' element={<Home />} />
 					<Route path='/albums' element={<Albums />} />
 					<Route path='/artists' element={<Artists />} />
+					<Route path='/tracks' element={<Tracks />} />
+					<Route path='/playlists' element={<Playlists />} />
 				</Route>
 			</Routes>
 		</div>

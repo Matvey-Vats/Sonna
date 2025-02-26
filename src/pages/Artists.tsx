@@ -1,7 +1,7 @@
 import { FC, useEffect, useRef, useState } from 'react'
-import Pagination from '../../components/Pagination'
-import Spinner from '../../components/Spinner'
-import { useGetReleasesQuery } from '../../redux/api/apiSlice'
+import Pagination from '../components/Pagination'
+import Spinner from '../components/Spinner'
+import { useGetReleasesQuery } from '../redux/api/apiSlice'
 
 type TArtist = {
 	id: number
@@ -59,7 +59,9 @@ const Artists: FC = () => {
 
 	if (isError) {
 		return (
-			<p className='text-white'>Error loading data. Please try again later.</p>
+			<p className='text-red-800 text-center bg-red-300 rounded-xl p-[5px]'>
+				Error loading data. Please try again later.
+			</p>
 		)
 	}
 
@@ -89,8 +91,8 @@ const Artists: FC = () => {
 				))}
 			</div>
 			<Pagination
-				items={artists}
 				page={page}
+				totalItems={data.total}
 				handleNextPage={handleNextPage}
 				handlePrevPage={handlePrevPage}
 			/>

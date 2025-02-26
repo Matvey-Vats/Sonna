@@ -39,7 +39,7 @@ const AlbumSlider: FC<{ items: TAlbum[]; isLoading: boolean }> = ({
 								alt={album?.title}
 								className='w-full h-[200px] object-cover rounded-md'
 							/>
-							<h3 className='text-center mt-4 text-lg font-semibold'>
+							<h3 className='text-center mt-4 text-lg font-semibold px-[10px]'>
 								{album?.title}
 							</h3>
 						</div>

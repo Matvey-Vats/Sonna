@@ -4,7 +4,6 @@ import {
 	HomeIcon,
 	ListMusic,
 	Palette,
-	SearchIcon,
 	SquarePlay,
 	Star,
 } from 'lucide-react'
@@ -30,19 +29,13 @@ const SideBar: FC = () => {
 						</Link>
 					</li>
 					<li>
-						<Link to='/' className='flex items-center'>
-							<SearchIcon className='h-6 w-6 text-white' />
-							<span className='text-white ml-3 hidden sm:inline'>Search</span>
-						</Link>
-					</li>
-					<li>
 						<Link to='/albums' className='flex items-center'>
 							<Disc3 className='h-6 w-6 text-white' />
 							<span className='text-white ml-3 hidden sm:inline'>Albums</span>
 						</Link>
 					</li>
 					<li>
-						<Link to='/' className='flex items-center'>
+						<Link to='/tracks' className='flex items-center'>
 							<SquarePlay className='h-6 w-6 text-white' />
 							<span className='text-white ml-3 hidden sm:inline'>Tracks</span>
 						</Link>
@@ -54,7 +47,7 @@ const SideBar: FC = () => {
 						</Link>
 					</li>
 					<li>
-						<Link to='/' className='flex items-center'>
+						<Link to='/playlists' className='flex items-center'>
 							<ListMusic className='h-6 w-6 text-white' />
 							<span className='text-white ml-3 hidden sm:inline'>
 								Playlists

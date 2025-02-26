@@ -1,8 +1,8 @@
 import { FC, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import Pagination from '../../components/Pagination'
-import Spinner from '../../components/Spinner'
-import { useGetReleasesQuery } from '../../redux/api/apiSlice'
+import Pagination from '../components/Pagination'
+import Spinner from '../components/Spinner'
+import { useGetReleasesQuery } from '../redux/api/apiSlice'
 
 interface IAlbum {
 	id: number
@@ -13,6 +13,7 @@ interface IAlbum {
 const Albums: FC = () => {
 	const [page, setPage] = useState(1)
 	const { data: albums, isLoading, isError } = useGetReleasesQuery(page)
+
 	const blockRef = useRef<HTMLDivElement | null>(null)
 	const handleNextPage = () => {
 		if (albums && albums.data.length === 20) {
@@ -30,6 +31,14 @@ const Albums: FC = () => {
 			block: 'start',
 		})
 	}, [page])
+
+	if (isError) {
+		return (
+			<p className='text-red-800 text-center bg-red-300 rounded-xl p-[5px]'>
+				Error loading data. Please try again later.
+			</p>
+		)
+	}
 
 	if (isLoading) {
 		return (
@@ -56,8 +65,8 @@ const Albums: FC = () => {
 				))}
 			</div>
 			<Pagination
-				items={albums}
 				page={page}
+				totalItems={albums.total}
 				handleNextPage={handleNextPage}
 				handlePrevPage={handlePrevPage}
 			/>

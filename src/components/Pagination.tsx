@@ -1,16 +1,18 @@
 type PaginationProps<T> = {
-	items: T[]
 	page: number
+	totalItems: number
 	handleNextPage: () => void
 	handlePrevPage: () => void
 }
 
 const Pagination = <T,>({
-	items,
 	page,
+	totalItems,
 	handleNextPage,
 	handlePrevPage,
 }: PaginationProps<T>) => {
+	const hasNextPage = page * 20 < totalItems
+
 	return (
 		<div className='flex items-center justify-center mt-[20px] gap-x-[20px]'>
 			<button
@@ -23,7 +25,7 @@ const Pagination = <T,>({
 			<button
 				className='text-white cursor-pointer bg-pink-600 py-[5px] px-[10px] rounded-xl disabled:bg-transparent disabled:cursor-default transition-all duration-300 hover:bg-pink-700 active:transform active:scale-95'
 				onClick={handleNextPage}
-				disabled={items && items.length < 20}
+				disabled={!hasNextPage}
 			>
 				Next
 			</button>

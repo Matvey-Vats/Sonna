@@ -6,7 +6,7 @@ import {
 	Volume2,
 	VolumeX,
 } from 'lucide-react'
-import { useEffect, useRef } from 'react'
+import { ChangeEvent, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
 	setCurrentTime,
@@ -64,6 +64,27 @@ const Player = () => {
 		dispatch(setVolume(volumeValue))
 	}
 
+	const handleVolumeOff = () => {
+		if (audioRef.current) {
+			audioRef.current.volume = 0
+		}
+		dispatch(setVolume(0))
+	}
+
+	const handleVolumeOn = () => {
+		if (audioRef.current) {
+			audioRef.current.volume = 1
+		}
+		dispatch(setVolume(1))
+	}
+
+	const handleDurationChange = (e: ChangeEvent<HTMLInputElement>) => {
+		const newTime = Number(e.target.value)
+		if (audioRef.current) {
+			audioRef.current.currentTime = newTime
+		}
+		dispatch(setCurrentTime(newTime))
+	}
 	const formatTime = (time: number) => {
 		const minutes = Math.floor(time / 60)
 		const seconds = Math.floor(time % 60)
@@ -103,9 +124,9 @@ const Player = () => {
 				<input
 					type='range'
 					min='0'
+					onChange={handleDurationChange}
 					max={duration || 1}
 					value={currentTime}
-					onChange={e => dispatch(setCurrentTime(Number(e.target.value)))}
 					className='w-full h-1 bg-gray-600 rounded-lg appearance cursor-pointer accent-blue-500'
 				/>
 				<span className='text-white text-sm w-10'>{formatTime(duration)}</span>
@@ -113,15 +134,9 @@ const Player = () => {
 
 			<div className='flex items-center gap-2'>
 				{volume > 0 ? (
-					<Volume2
-						onClick={() => dispatch(setVolume(0))}
-						className='text-white w-5 h-5'
-					/>
+					<Volume2 onClick={handleVolumeOff} className='text-white w-5 h-5' />
 				) : (
-					<VolumeX
-						onClick={() => dispatch(setVolume(100))}
-						className='text-white w-5 h-5'
-					/>
+					<VolumeX onClick={handleVolumeOn} className='text-white w-5 h-5' />
 				)}
 
 				<input
@@ -136,8 +151,7 @@ const Player = () => {
 			</div>
 
 			<audio ref={audioRef}>
-				<source src={currentTrack} type='audio/mpeg' />
-				<source src={currentTrack.replace('.mp3', '.ogg')} type='audio/ogg' />
+				{currentTrack && <source src={currentTrack} type='audio/mpeg' />}
 			</audio>
 		</div>
 	)

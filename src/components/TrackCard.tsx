@@ -2,6 +2,7 @@ import { Play } from 'lucide-react'
 import { FC } from 'react'
 import { useDispatch } from 'react-redux'
 import { setTrack } from '../redux/slices/playerSlice'
+import { AppDispatch } from '../redux/store'
 
 type PropsTypes = {
 	title: string
@@ -10,7 +11,7 @@ type PropsTypes = {
 }
 
 const TrackCard: FC<PropsTypes> = ({ title, md5_image, preview }) => {
-	const dispatch = useDispatch()
+	const dispatch = useDispatch<AppDispatch>()
 
 	const handleTrackClick = (trackUrl: string) => {
 		dispatch(setTrack({ currentTrack: trackUrl, currentTrackName: title }))

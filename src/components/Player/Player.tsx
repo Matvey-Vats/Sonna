@@ -14,11 +14,11 @@ import {
 	setVolume,
 	togglePlay,
 } from '../../redux/slices/playerSlice'
-import { RootState } from '../../redux/store'
+import { AppDispatch, RootState } from '../../redux/store'
 
 const Player = () => {
 	const audioRef = useRef<HTMLAudioElement | null>(null)
-	const dispatch = useDispatch()
+	const dispatch = useDispatch<AppDispatch>()
 	const {
 		isPlaying,
 		currentTrack,

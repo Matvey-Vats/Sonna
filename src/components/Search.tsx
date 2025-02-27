@@ -4,11 +4,12 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { useSearchQueryQuery } from '../redux/api/apiSlice'
 import { setSearchResults } from '../redux/slices/searchSlice'
+import { AppDispatch } from '../redux/store'
 
 const SearchBlock: FC = () => {
 	const [value, setValue] = useState('')
 	const [searchValue, setSearchValue] = useState('')
-	const dispatch = useDispatch()
+	const dispatch = useDispatch<AppDispatch>()
 	const { data } = useSearchQueryQuery(searchValue, {
 		skip: !searchValue,
 	})

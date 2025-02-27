@@ -24,7 +24,6 @@ const Playlists: FC = () => {
 			isError,
 		}),
 	})
-	console.log(playlists)
 
 	return (
 		<div>

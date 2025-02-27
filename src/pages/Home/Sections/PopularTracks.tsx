@@ -20,7 +20,7 @@ const PopularTracks: FC<PropsTypes> = ({ items, isSearch = false }) => {
 	const displayTracks = isSearch ? items : tracks
 
 	return (
-		<div className='w-full mb-[70px]'>
+		<div className='w-full mb-50'>
 			<div className='flex items-center justify-between mb-5'>
 				<h2 className='text-white font-bold font-[Poppins] text-3xl'>
 					Most popular tracks

@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { apiSlice } from './api/apiSlice'
+import auth from './slices/authSlice'
 import player from './slices/playerSlice'
 import search from './slices/searchSlice'
 
@@ -9,6 +10,7 @@ export const store = configureStore({
 		[apiSlice.reducerPath]: apiSlice.reducer,
 		search,
 		player,
+		auth,
 	},
 	middleware: getDefaultMiddleware =>
 		getDefaultMiddleware().concat(apiSlice.middleware),

@@ -17,8 +17,6 @@ const Tracks: FC = () => {
 		}),
 	})
 
-	console.log(tracks)
-
 	if (isError) {
 		return (
 			<p className='text-red-800 text-center bg-red-300 rounded-xl p-[5px]'>

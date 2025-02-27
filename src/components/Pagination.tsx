@@ -1,16 +1,16 @@
-type PaginationProps<T> = {
+type PaginationProps = {
 	page: number
 	totalItems: number
 	handleNextPage: () => void
 	handlePrevPage: () => void
 }
 
-const Pagination = <T,>({
+const Pagination = ({
 	page,
 	totalItems,
 	handleNextPage,
 	handlePrevPage,
-}: PaginationProps<T>) => {
+}: PaginationProps) => {
 	const hasNextPage = page * 20 < totalItems
 
 	return (

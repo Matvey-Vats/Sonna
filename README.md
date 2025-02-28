@@ -1,50 +1,99 @@
-# React + TypeScript + Vite
+# Sonna - Music player
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Sonna** — is a web-based music app with search, favorites and playlist management features. The application provides a convenient interface for listening to music, as well as the ability to switch between tracks, add them to favorites and manage the playing state.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Getting started
 
-## Expanding the ESLint configuration
+To run the project locally on your computer, follow these steps:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### 1. Cloning a repository
 
-- Configure the top-level `parserOptions` property like this:
+Clone the repository to your local computer:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+git clone https://github.com/Matvey-Vats/Sonna.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### 2. Installing dependencies
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Go to your project directory and install all the required dependencies:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+cd Sonna
+yarn
 ```
+
+### 3. Project launch
+
+After installing the dependencies, run the project:
+
+```bash
+yarn dev
+```
+---
+
+## 📜 Project Description
+
+Sonna is a music player that provides options for:
+
+- Listening to music tracks.
+- Adding tracks, artists, albums and playlists to favorites.
+- Player state control (play, pause, switch).
+- Saving data in local storage.
+- Authorization and registration via firebase with the ability to log in with google
+- Search music by keywords and filter the results.
+
+---
+
+## ⚙️ Main Features
+
+- **Audio playback support**: Uses HTML5 `<audio>` element to play music tracks.
+- **Favorites**: Tracks can be added to favorites and deleted.
+- **Search**: Built-in keyword search.
+- **Local storage**: All data (favorite tracks and whether the user is logged in) is saved in the browser's local storage.
+- **Interface**: Simple and convenient user interface for comfortable use.
+- **TypeScript**: The entire project is typed.
+
+---
+
+## 📂 Project structure
+
+```
+/Sonna
+│
+├── /src
+│   ├── /assets
+│   ├── /components
+│   │   ├── Player.tsx    
+│   │   ├── Search.tsx    
+│   │   └── ...
+│   ├── /pages
+│   │   ├── Home.tsx
+│   │   └── ...           
+│   ├── App.tsx           
+│   ├── index.tsx         
+│   └── ...
+├── /public
+│   └── index.html       
+├── package.json         
+└── README.md            
+```
+
+---
+
+## 🔧 Technologies
+
+- **React** 
+- **HTML5** 
+- **TailwindCSS** 
+- **LocalStorage**
+- **React Router Dom**
+- **TypeScript**
+- **Redux Toolkit**
+- **RTK Query**
+- **React Hook Form**
+- **Lucide Icons**
+- **Swiper**
+- **Firebase**

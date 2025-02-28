@@ -56,7 +56,7 @@ const Albums: FC = () => {
 			<div className='flex items-center justify-between flex-wrap gap-[20px]'>
 				{isError && <p className='text-white'>Error</p>}
 				{albums?.data?.map((album: IAlbum) => (
-					<Link to={`/albums/${album.id}`} key={album.id}>
+					<Link to={`/albums/${album.id}`} key={album.id} className='mx-auto'>
 						<div className='w-[230px] h-[275px] text-center rounded-md bg-pink-900'>
 							<img src={album.cover_big} alt={album.title} />
 							<h2 className='text-white'>{album.title}</h2>

@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import FavoriteButton from '../../components/FavoriteButton'
 
 interface ICreator {
 	id: number
@@ -17,6 +18,7 @@ interface IPLaylistInfoProps {
 }
 
 const PlaylistInfo: FC<IPLaylistInfoProps> = ({
+	id,
 	title,
 	description,
 	duration,
@@ -29,11 +31,16 @@ const PlaylistInfo: FC<IPLaylistInfoProps> = ({
 		<div className='mb-8'>
 			<div className='flex items-center justify-center'>
 				<div>
-					<img
-						className='bg-[#e0aaff] rounded-md p-7'
-						src={picture_big}
-						alt={title}
-					/>
+					<div className='bg-[#e0aaff] rounded-md p-7'>
+						<img className='rounded-md mb-5' src={picture_big} alt={title} />
+						<FavoriteButton
+							id={id}
+							title={title}
+							cover_big={picture_big}
+							type={'playlists'}
+							preview=''
+						/>
+					</div>
 					<div className=''>
 						<div className='bg-[#e0aaff] mt-5 p-5 rounded-md font-bold text-[#11001c]'>
 							<h3>{title}</h3>

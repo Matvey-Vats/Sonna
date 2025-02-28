@@ -1,10 +1,12 @@
 import { FC } from 'react'
+import FavoriteButton from '../../components/FavoriteButton'
 import { IGenre } from '../../types/MainTypes'
 
 type WrapGenre = {
 	data: IGenre[]
 }
 interface IAlbumInfoProps {
+	id: number
 	title: string
 	label: string
 	duration: number
@@ -14,6 +16,7 @@ interface IAlbumInfoProps {
 }
 
 const AlbumInfo: FC<IAlbumInfoProps> = ({
+	id,
 	title,
 	label,
 	duration,
@@ -23,11 +26,17 @@ const AlbumInfo: FC<IAlbumInfoProps> = ({
 }) => {
 	return (
 		<div className='flex flex-col items-center justify-between'>
-			<img
-				className='rounded-md mb-7 p-6 bg-[#e0aaff]'
-				src={cover_big}
-				alt={title}
-			/>
+			<div className='rounded-md mb-7 p-6 bg-[#e0aaff]'>
+				<img className='rounded-md mb-7' src={cover_big} alt={title} />
+				<FavoriteButton
+					id={id}
+					title={title}
+					cover_big={cover_big}
+					type={'albums'}
+					preview=''
+				/>
+			</div>
+
 			<div className='max-w-[500px]'>
 				<div className='flex flex-wrap gap-4 mb-5'>
 					<div className='bg-[#e0aaff] p-4 rounded-md'>

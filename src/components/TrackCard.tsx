@@ -3,25 +3,25 @@ import { FC } from 'react'
 import { useDispatch } from 'react-redux'
 import { setTrack } from '../redux/slices/playerSlice'
 import { AppDispatch } from '../redux/store'
+import FavoriteButton from './FavoriteButton'
 
 type PropsTypes = {
+	id: number
 	title: string
 	md5_image: string
 	preview: string
 }
 
-const TrackCard: FC<PropsTypes> = ({ title, md5_image, preview }) => {
+const TrackCard: FC<PropsTypes> = ({ id, title, md5_image, preview }) => {
 	const dispatch = useDispatch<AppDispatch>()
+	const fullImgUrl = `https://e-cdns-images.dzcdn.net/images/cover/${md5_image}/500x500-000000-80-0-0.jpg`
 
 	const handleTrackClick = (trackUrl: string) => {
 		dispatch(setTrack({ currentTrack: trackUrl, currentTrackName: title }))
 	}
 	return (
-		<div
-			onClick={() => handleTrackClick(preview)}
-			className='bg-[#e0aaff] rounded-md shadow-lg w-[250px] h-[300px] text-center'
-		>
-			<div className='relative group'>
+		<div className='bg-pink-900 rounded-md shadow-lg w-[250px] h-[300px] text-center'>
+			<div onClick={() => handleTrackClick(preview)} className='relative group'>
 				<img
 					src={`https://e-cdns-images.dzcdn.net/images/cover/${md5_image}/500x500-000000-80-0-0.jpg`}
 					alt={title}
@@ -33,7 +33,16 @@ const TrackCard: FC<PropsTypes> = ({ title, md5_image, preview }) => {
 				/>
 			</div>
 
-			<h3 className='text-center mt-4 text-lg font-semibold'>{title}</h3>
+			<div className='flex items-center justify-center mt-4 p-2'>
+				<h3 className='text-center text-lg font-semibold mr-4'>{title}</h3>
+				<FavoriteButton
+					id={id}
+					title={title}
+					cover_big={md5_image}
+					preview={preview}
+					type={'tracks'}
+				/>
+			</div>
 		</div>
 	)
 }

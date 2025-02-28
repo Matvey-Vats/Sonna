@@ -31,7 +31,7 @@ const SearchBlock: FC = () => {
 	}
 
 	return (
-		<div className='flex items-center gap-x-[10px] w-[400px]'>
+		<div className='flex items-center gap-x-[10px] w-full'>
 			<input
 				value={value}
 				onChange={e => setValue(e.target.value)}

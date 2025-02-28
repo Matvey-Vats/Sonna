@@ -51,3 +51,12 @@ export type TTracks = {
 	preview: string
 	artist: IArtist
 }
+
+export interface IPLaylist {
+	id: number
+	title: string
+	link: string
+	picture_big: string
+	nb_tracks: number
+	tracklist: string
+}

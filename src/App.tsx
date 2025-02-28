@@ -8,6 +8,7 @@ import ArtistDetail from './pages/Artists/ArtistDetail'
 import Artists from './pages/Artists/Artists'
 import Login from './pages/Auth/Login'
 import Register from './pages/Auth/Register'
+import Favorites from './pages/Favorites/Favorites'
 import Home from './pages/Home/Home'
 import PlaylistDetail from './pages/Playlists/PlaylistDetail'
 import Playlists from './pages/Playlists/Playlists'
@@ -39,6 +40,7 @@ function App() {
 					<Route path='/playlists/:id' element={<PlaylistDetail />} />
 					<Route path='login' element={<Login />} />
 					<Route path='register' element={<Register />} />
+					<Route path='favorites' element={<Favorites />} />
 				</Route>
 			</Routes>
 		</div>

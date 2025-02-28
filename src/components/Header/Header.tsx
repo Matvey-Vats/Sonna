@@ -10,9 +10,9 @@ const Header: FC = () => {
 	const user = useSelector((state: RootState) => state.auth.user)
 	const dispatch = useDispatch<AppDispatch>()
 	return (
-		<div className='flex items-center justify-between mb-[50px]'>
+		<div className='flex items-center justify-between gap-x-5 mb-[50px]'>
 			<SearchBlock />
-			<div className='flex items-center gap-x-[15px] text-white'>
+			<div className='flex items-center gap-x-[15px] w-[200px] text-white'>
 				{user ? (
 					<button
 						className='cursor-pointer'

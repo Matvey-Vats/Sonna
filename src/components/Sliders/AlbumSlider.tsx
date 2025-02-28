@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import { Link } from 'react-router-dom'
 import Skeleton from '../../pages/Home/Sections/Skeleton'
+import AlbumCard from '../AlbumCard'
 import { TArtist } from './ArtistSlider'
 import Slider from './Slider'
 
@@ -32,18 +32,11 @@ const AlbumSlider: FC<{ items: TAlbum[]; isLoading: boolean }> = ({
 				isLoading ? (
 					<Skeleton />
 				) : (
-					<Link to={`/albums/${album.id}`}>
-						<div className='bg-[#e0aaff] rounded-md shadow-lg w-[250px] h-[300px] text-center'>
-							<img
-								src={album?.cover_big}
-								alt={album?.title}
-								className='w-full h-[200px] object-cover rounded-md'
-							/>
-							<h3 className='text-center mt-4 text-lg font-semibold px-[10px]'>
-								{album?.title}
-							</h3>
-						</div>
-					</Link>
+					<AlbumCard
+						{...album}
+						name={album.title}
+						picture_big={album.cover_big}
+					/>
 				)
 			}
 		/>

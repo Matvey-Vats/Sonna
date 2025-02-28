@@ -41,7 +41,9 @@ const Tracks: FC = () => {
 			<div className='flex flex-wrap items-center justify-between gap-y-[20px] gap-x-[10px]'>
 				{tracks &&
 					tracks.map((track: TTracks) => (
-						<TrackCard key={track.id} {...track} />
+						<div key={track.id} className='mx-auto'>
+							<TrackCard {...track} />
+						</div>
 					))}
 			</div>
 		</div>

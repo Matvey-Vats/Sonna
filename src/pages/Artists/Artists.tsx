@@ -1,5 +1,5 @@
 import { FC, useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import ArtistCard from '../../components/ArtistCard'
 import Pagination from '../../components/Pagination'
 import Spinner from '../../components/Spinner'
 import { useGetReleasesQuery } from '../../redux/api/apiSlice'
@@ -82,12 +82,7 @@ const Artists: FC = () => {
 
 			<div className='flex flex-wrap items-center justify-between gap-[20px]'>
 				{artists.map((artist: TArtist) => (
-					<Link key={artist.id} to={`/artists/${artist.id}`}>
-						<div className='w-[220px] h-[275px] rounded-md bg-pink-900 text-center mt-[10px]'>
-							<img src={artist.picture_big} alt={artist.name} />
-							<h3>{artist.name}</h3>
-						</div>
-					</Link>
+					<ArtistCard key={artist.id} {...artist} />
 				))}
 			</div>
 			<Pagination

@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import { Link } from 'react-router-dom'
 import Skeleton from '../../pages/Home/Sections/Skeleton'
+import ArtistCard from '../ArtistCard'
 import Slider from './Slider'
 
 export type TArtist = {
@@ -28,25 +28,7 @@ const ArtistsSlider: FC<{ items: TArtist[]; isLoading: boolean }> = ({
 		<Slider
 			items={isLoading ? skeletons : items}
 			renderItem={artist =>
-				isLoading ? (
-					<Skeleton />
-				) : (
-					<Link to={`/artists/${artist.id}`}>
-						<div className='bg-[#e0aaff] rounded-md shadow-md w-[250px] h-[300px] text-center'>
-							<div>
-								<img
-									src={artist.picture_big}
-									alt={artist.name}
-									className='w-full h-[200px] object-cover rounded-md'
-								/>
-							</div>
-
-							<h3 className='text-center mt-4 text-lg font-semibold'>
-								{artist.name}
-							</h3>
-						</div>
-					</Link>
-				)
+				isLoading ? <Skeleton /> : <ArtistCard {...artist} />
 			}
 		/>
 	)

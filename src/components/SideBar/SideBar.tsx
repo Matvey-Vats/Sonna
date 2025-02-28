@@ -55,7 +55,7 @@ const SideBar: FC = () => {
 						</Link>
 					</li>
 					<li>
-						<Link to='/' className='flex items-center'>
+						<Link to='/favorites' className='flex items-center'>
 							<Star className='h-6 w-6 text-white' />
 							<span className='text-white ml-3 hidden sm:inline'>
 								Favorites

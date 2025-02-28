@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { apiSlice } from './api/apiSlice'
 import auth from './slices/authSlice'
+import favorites from './slices/favoritesSlice'
 import player from './slices/playerSlice'
 import search from './slices/searchSlice'
 
@@ -11,6 +12,7 @@ export const store = configureStore({
 		search,
 		player,
 		auth,
+		favorites,
 	},
 	middleware: getDefaultMiddleware =>
 		getDefaultMiddleware().concat(apiSlice.middleware),

@@ -49,7 +49,7 @@ const Albums: FC = () => {
 	}
 
 	return (
-		<div ref={blockRef}>
+		<div ref={blockRef} className='mb-50'>
 			<h2 className='text-white font-bold font-["Poppins"] text-3xl mb-[20px]'>
 				Albums
 			</h2>

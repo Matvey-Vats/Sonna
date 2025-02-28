@@ -34,7 +34,7 @@ const Tracks: FC = () => {
 	}
 
 	return (
-		<div className='text-white'>
+		<div className='text-white mb-50'>
 			<h2 className='text-white font-bold font-["Poppins"] text-3xl mb-[20px]'>
 				Tracks
 			</h2>

@@ -18,7 +18,7 @@ const Playlists: FC = () => {
 	})
 
 	return (
-		<div>
+		<div className='mb-50'>
 			<h2 className='text-white font-bold font-["Poppins"] text-3xl mb-[20px]'>
 				Albums
 			</h2>

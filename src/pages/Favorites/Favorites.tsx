@@ -19,7 +19,6 @@ const Favorites: FC = () => {
 		albums,
 		playlists
 	)
-	console.log(fullFavoriteList)
 
 	if (!user) {
 		return (
@@ -46,7 +45,7 @@ const Favorites: FC = () => {
 		)
 	}
 	return (
-		<div>
+		<div className='mb-50'>
 			<h2 className='text-white font-bold text-3xl mb-5'>Favorites</h2>
 			<div className='text-white'>
 				{tracks.length > 0 && (

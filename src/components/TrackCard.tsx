@@ -14,7 +14,6 @@ type PropsTypes = {
 
 const TrackCard: FC<PropsTypes> = ({ id, title, md5_image, preview }) => {
 	const dispatch = useDispatch<AppDispatch>()
-	const fullImgUrl = `https://e-cdns-images.dzcdn.net/images/cover/${md5_image}/500x500-000000-80-0-0.jpg`
 
 	const handleTrackClick = (trackUrl: string) => {
 		dispatch(setTrack({ currentTrack: trackUrl, currentTrackName: title }))

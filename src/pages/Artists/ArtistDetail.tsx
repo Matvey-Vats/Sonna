@@ -19,10 +19,8 @@ const ArtistDetail: FC = () => {
 		index: (page - 1) * 10,
 	})
 
-	console.log(artist)
-
 	return (
-		<div className='text-white'>
+		<div className='text-white mb-50'>
 			<DataStatus isLoading={isLoading} isError={isError} />
 			{!isLoading && !isError && artist && tracks && (
 				<>

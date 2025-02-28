@@ -75,7 +75,7 @@ const Artists: FC = () => {
 	}
 
 	return (
-		<div ref={scrollRef} className='text-white'>
+		<div ref={scrollRef} className='text-white mb-50'>
 			<h2 className='text-white font-bold font-["Poppins"] text-3xl mb-[20px]'>
 				Artists
 			</h2>

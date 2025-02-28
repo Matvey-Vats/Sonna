@@ -1,11 +1,4 @@
-import {
-	Pause,
-	Play,
-	SkipBack,
-	SkipForward,
-	Volume2,
-	VolumeX,
-} from 'lucide-react'
+import { Pause, Play, Volume2, VolumeX } from 'lucide-react'
 import { ChangeEvent, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -103,17 +96,11 @@ const Player = () => {
 				<h1>{currentTrackName}</h1>
 			</div>
 			<div className='flex gap-4 items-center'>
-				<button className='hover:scale-110 transition-transform'>
-					<SkipBack className='text-white w-6 h-6' />
-				</button>
 				<button
 					onClick={togglePlayHandler}
 					className='text-white hover:scale-110 transition-transform'
 				>
 					{isPlaying ? <Pause size={30} /> : <Play size={30} />}
-				</button>
-				<button className='hover:scale-110 transition-transform'>
-					<SkipForward className='text-white w-6 h-6' />
 				</button>
 			</div>
 

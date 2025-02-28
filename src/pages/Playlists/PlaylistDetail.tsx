@@ -20,7 +20,7 @@ const PlaylistDetail: FC = () => {
 	})
 
 	return (
-		<div className='text-white'>
+		<div className='text-white mb-50'>
 			<DataStatus isLoading={isLoading} isError={isError} />
 			{!isLoading && !isError && playlist && tracks && (
 				<>

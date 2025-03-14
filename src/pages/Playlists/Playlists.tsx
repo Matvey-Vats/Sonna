@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import DataStatus from '../../components/DataStatus'
 import PlaylistCard from '../../components/PlaylistCard'
-import { useGetTopChartsQuery } from '../../redux/api/apiSlice'
+import { useGetTopChartsQuery } from '../../redux/api/baseApi'
 import { IPLaylist } from '../../types/MainTypes'
 
 const Playlists: FC = () => {

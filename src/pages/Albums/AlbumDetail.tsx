@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { useParams } from 'react-router-dom'
 import DataStatus from '../../components/DataStatus'
 import TrackList from '../../components/TrackList'
-import { useGetAlbumByIdQuery } from '../../redux/api/apiSlice'
+import { useGetAlbumByIdQuery } from '../../redux/api/albumsApi'
 import AlbumInfo from './AlbumInfo'
 
 const AlbumDetail: FC = () => {

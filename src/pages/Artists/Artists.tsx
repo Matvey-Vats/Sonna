@@ -2,7 +2,7 @@ import { FC, useEffect, useRef, useState } from 'react'
 import ArtistCard from '../../components/ArtistCard'
 import Pagination from '../../components/Pagination'
 import Spinner from '../../components/Spinner'
-import { useGetReleasesQuery } from '../../redux/api/apiSlice'
+import { useGetReleasesQuery } from '../../redux/api/baseApi'
 
 type TArtist = {
 	id: number

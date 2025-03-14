@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import AlbumSlider from '../../../components/Sliders/AlbumSlider'
-import { useGetTopChartsQuery } from '../../../redux/api/apiSlice'
+import { useGetTopChartsQuery } from '../../../redux/api/baseApi'
 import { IAlbum } from '../../../types/MainTypes'
 
 type PropsTypes = {

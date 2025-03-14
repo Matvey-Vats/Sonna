@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import TrackSlider from '../../../components/Sliders/TrackSlider'
-import { useGetTopChartsQuery } from '../../../redux/api/apiSlice'
+import { useGetTopChartsQuery } from '../../../redux/api/baseApi'
 import { TTracks } from '../../../types/MainTypes'
 
 type PropsTypes = {

@@ -2,7 +2,7 @@ import { Search } from 'lucide-react'
 import { FC, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { useSearchQueryQuery } from '../redux/api/apiSlice'
+import { useSearchQueryQuery } from '../redux/api/searchApi'
 import { setSearchResults } from '../redux/slices/searchSlice'
 import { AppDispatch } from '../redux/store'
 

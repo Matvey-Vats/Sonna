@@ -6,7 +6,8 @@ import TrackList from '../../components/TrackList'
 import {
 	useGetArtistByIdQuery,
 	useGetTracksByArtistQuery,
-} from '../../redux/api/apiSlice'
+} from '../../redux/api/artistsApi'
+
 import ArtistInfo from './ArtistInfo'
 
 const ArtistDetail: FC = () => {

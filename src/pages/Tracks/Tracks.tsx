@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import Spinner from '../../components/Spinner'
 import TrackCard from '../../components/TrackCard'
-import { useGetTracksByAlbumIdQuery } from '../../redux/api/apiSlice'
+import { useGetTracksByAlbumIdQuery } from '../../redux/api/albumsApi'
 import { TTracks } from '../../types/MainTypes'
 
 const Tracks: FC = () => {

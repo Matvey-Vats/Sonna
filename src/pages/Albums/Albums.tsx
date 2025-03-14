@@ -2,7 +2,7 @@ import { FC, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Pagination from '../../components/Pagination'
 import Spinner from '../../components/Spinner'
-import { useGetReleasesQuery } from '../../redux/api/apiSlice'
+import { useGetReleasesQuery } from '../../redux/api/baseApi'
 
 interface IAlbum {
 	id: number

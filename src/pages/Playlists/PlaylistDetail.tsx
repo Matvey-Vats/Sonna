@@ -3,10 +3,11 @@ import { useParams } from 'react-router-dom'
 import DataStatus from '../../components/DataStatus'
 import Pagination from '../../components/Pagination'
 import TrackList from '../../components/TrackList'
+
 import {
 	useGetPlayListByIdQuery,
 	useGetTracksByPlaylistQuery,
-} from '../../redux/api/apiSlice'
+} from '../../redux/api/playlistsApi'
 import PlaylistInfo from './PlaylistInfo'
 
 const PlaylistDetail: FC = () => {

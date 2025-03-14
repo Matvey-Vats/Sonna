@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import ArtistSlider, { TArtist } from '../../../components/Sliders/ArtistSlider'
-import { useGetTopChartsQuery } from '../../../redux/api/apiSlice'
+import { useGetTopChartsQuery } from '../../../redux/api/baseApi'
 
 type PropsTypes = {
 	items: TArtist[]
